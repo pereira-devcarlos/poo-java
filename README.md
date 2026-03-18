@@ -1,6 +1,16 @@
 # Orientação a Objetos
 
-Repositório dedicado aos materiais, exemplos e trabalhos da disciplina de Orientação a Objetos (Object Orientation), código DCE530, do curso de Ciência da Computação da Universidade Federal de Alfenas (Unifal).
+> **Curso:** Ciência da Computação — Universidade Federal de Alfenas  
+> **Carga Horária Total:** 60h (30h Teórica + 30h Prática)  
+> **Semestre:** 2026/1  
+> **Professor:** Rodrigo Martins Pagliares  
+
+![Status](https://img.shields.io/badge/status-em%20andamento-yellow)
+![Linguagem](https://img.shields.io/badge/Linguagem-Java-blue)
+![Disciplina](https://img.shields.io/badge/Disciplina-POO-orange)
+![Ano/Semestre](https://img.shields.io/badge/2026-1%C2%BA%20semestre-brightgreen)
+
+Repositório dedicado aos materiais, exemplos e trabalhos da disciplina de Orientação a Objetos (Object Orientation), código DCE530.
 
 ## Conteúdo Programático
 
@@ -25,14 +35,6 @@ A nota final da disciplina é composta pelos seguintes instrumentos de avaliaç�
 * LARMAN, C. "Utilizando UML e Padrões". Bookman, 2004.
 * PFLEEGER, SHARI L. Engenharia de software: Teoria e Prática. Editora Pearson.
 * SOMMERVILLE, I. Engenharia de Software. Editora: Prentice-hall.
-
-## Informações Gerais
-
-* **Instituição**: Universidade Federal de Alfenas (Unifal)
-* **Curso**: Ciência da Computação (08)
-* **Ano / Semestre**: 2026 / Primeiro
-* **Carga Horária Total**: 60h Teóricas
-* **Docente Responsável**: Rodrigo Martins Pagliares
 
 ## Aluno
 
