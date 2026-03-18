@@ -12,13 +12,47 @@
 
 Repositório dedicado aos materiais, exemplos e trabalhos da disciplina de Orientação a Objetos (Object Orientation), código DCE530.
 
+
 ## Conteúdo Programático
 
-* **Unidade I - Configuração de Ambiente e Build**: Introdução a orientação a objetos e a linguagem de programação Java, gestão de múltiplos JDKs (Java Development Kit), os Ambientes Integrados de Desenvolvimento - IDEs - Eclipse, Intellij e NetBeans e ferramentas de construção (build) de software: Maven e Gradle.
-* **Unidade II - Programação Orientada a Objetos**: Abstração e Encapsulamento, Classes e Objetos, Variáveis de instância e de classe, Construtores, Métodos, Herança, Interfaces, Classes abstratas, Polimorfismo, Sobrescrita e sobrecarga e Tratamento de exceções (Exception handling).
-* **Unidade III - Testes de Unidade**: Introdução a teste de software e testes de unidade, configuração da biblioteca de testes JUnit, Test Driven Development - TDD, Mocks e Cobertura de código.
-* **Unidade IV - Análise e Design Orientado a Objetos**: Modelos de Domínio, Diagramas de Seqüência do Sistema, Contratos de Operação, Design de Objetos e Classes UML, GRASP (Projeto de Objetos com Responsabilidades), Projetar para Visibilidade, Mapeamento de Projetos para Código e Princípios de design e design patterns.
-* **Unidade V - Linguagens de Programação**: API Padrão do Java SE - Standard Edition.
+### Unidade I - Configuração de Ambiente e Build
+- Introdução à orientação a objetos e à linguagem de programação Java
+- Gestão de múltiplos JDKs (Java Development Kit)
+- Ambientes Integrados de Desenvolvimento (IDEs): Eclipse, Intellij e NetBeans
+- Ferramentas de construção (build) de software: Maven e Gradle
+
+### Unidade II - Programação Orientada a Objetos
+- Abstração e Encapsulamento
+- Classes e Objetos
+- Variáveis de instância e de classe
+- Construtores
+- Métodos
+- Herança
+- Interfaces
+- Classes abstratas
+- Polimorfismo
+- Sobrescrita e sobrecarga
+- Tratamento de exceções (Exception handling)
+
+### Unidade III - Testes de Unidade
+- Introdução a teste de software e testes de unidade
+- Configuração da biblioteca de testes JUnit
+- Test Driven Development (TDD)
+- Mocks
+- Cobertura de código
+
+### Unidade IV - Análise e Design Orientado a Objetos
+- Modelos de Domínio
+- Diagramas de Sequência do Sistema
+- Contratos de Operação
+- Design de Objetos e Classes UML
+- GRASP (Projeto de Objetos com Responsabilidades)
+- Projetar para Visibilidade
+- Mapeamento de Projetos para Código
+- Princípios de design e design patterns
+
+### Unidade V - Linguagens de Programação
+- API Padrão do Java SE - Standard Edition
 
 ## Sistema de Avaliação
 
