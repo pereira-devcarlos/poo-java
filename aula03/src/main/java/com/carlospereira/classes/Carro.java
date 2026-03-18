@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+// Testando as anotações do Lombok
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
