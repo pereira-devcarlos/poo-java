@@ -1,0 +1,50 @@
+# .gitignore para projetos Java e Maven
+
+# Compilados Java
+*.class
+
+# Logs
+*.log
+
+# Diretórios de build
+/bin/
+/build/
+/target/
+
+# Arquivos de configuração do IDE
+*.iml
+*.ipr
+*.iws
+.idea/
+*.classpath
+*.project
+*.settings/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de dependências baixadas pelo Maven
+.mvn/
+
+# Arquivos de cache
+*.swp
+
+# Arquivos de teste gerados
+/test-output/
+
+# Arquivos de backup
+*~
+
+# Arquivos de ambiente
+.env
+
+# Arquivos de relatórios
+*.out
+*.tmp
+
+# Arquivos de cobertura de código
+jacoco.exec
+
+# Arquivos do VS Code
+.vscode/
