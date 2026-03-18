@@ -7,9 +7,12 @@
 *.log
 
 # Diretórios de build
-/bin/
-/build/
-/target/
+bin/
+build/
+target/
+**/bin/
+**/build/
+**/target/
 
 # Arquivos de configuração do IDE
 *.iml
