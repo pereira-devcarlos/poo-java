@@ -2,6 +2,7 @@
 
 # Compilados Java
 *.class
+**/*.class
 
 # Logs
 *.log
@@ -51,3 +52,4 @@ jacoco.exec
 
 # Arquivos do VS Code
 .vscode/
+**/.vscode/
