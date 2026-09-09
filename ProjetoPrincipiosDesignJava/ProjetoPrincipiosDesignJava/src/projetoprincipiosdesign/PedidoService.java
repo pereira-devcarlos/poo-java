@@ -10,13 +10,14 @@ import projetoprincipiosdesign.Enum.FormaPagamento;
 import projetoprincipiosdesign.Enum.TipoCliente;
 import projetoprincipiosdesign.Pagamento.PagamentoService;
 import projetoprincipiosdesign.Persistencia.PedidoRepository;
+import projetoprincipiosdesign.Persistencia.PedidoRepositoryArquivo;
 
 public class PedidoService {
     private final PedidoRepository pedidoRepository;
     private final PagamentoService pagamentoService;
 
-    public PedidoService(PedidoRepository pedidoRepository, PagamentoService pagamentoService) {
-        this.pedidoRepository = pedidoRepository;
+    public PedidoService(PagamentoService pagamentoService) {
+        this.pedidoRepository = new PedidoRepositoryArquivo();
         this.pagamentoService = pagamentoService;
     }
 
@@ -46,7 +47,7 @@ public class PedidoService {
         System.out.println("Cliente: " + pedido.getCliente().getNome());
         System.out.printf("Total: R$ %.2f%n", total);
 
-        pagamentoService.processarPagamento(formaPagamento,total, numeroParcelas);
+        pagamentoService.processarPagamento(formaPagamento, total, numeroParcelas);
 
         System.out.println(
             "Enviando mensagem para " + pedido.getCliente().getNome() + ": pedido finalizado."
