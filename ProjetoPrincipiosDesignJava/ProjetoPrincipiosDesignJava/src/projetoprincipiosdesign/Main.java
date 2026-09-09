@@ -7,6 +7,8 @@ import projetoprincipiosdesign.Dominio.Cliente;
 import projetoprincipiosdesign.Dominio.Endereco;
 import projetoprincipiosdesign.Dominio.ItemPedido;
 import projetoprincipiosdesign.Dominio.Pedido;
+import projetoprincipiosdesign.Enum.FormaPagamento;
+import projetoprincipiosdesign.Enum.TipoCliente;
 
 public class Main {
     public static void main(String[] args) {
@@ -36,11 +38,11 @@ public class Main {
 
         System.out.println();
         System.out.println("Total com desconto:");
-        System.out.printf("R$ %.2f%n", servico.calcularTotal(pedido, "ALUNO"));
+        System.out.printf("R$ %.2f%n", servico.calcularTotal(pedido, TipoCliente.ALUNO));
 
         System.out.println();
         System.out.println("Pagamento:");
-        servico.finalizarPedido(pedido, "CARTAO", "ALUNO", 3);
+        servico.finalizarPedido(pedido, FormaPagamento.CARTAO, TipoCliente.ALUNO, 3);
 
         System.out.println();
         System.out.println("Programa executado com sucesso.");

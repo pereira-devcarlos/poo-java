@@ -6,20 +6,18 @@ import projetoprincipiosdesign.Desconto.DescontoFuncionario;
 import projetoprincipiosdesign.Desconto.DescontoProfessor;
 import projetoprincipiosdesign.Dominio.ItemPedido;
 import projetoprincipiosdesign.Dominio.Pedido;
+import projetoprincipiosdesign.Enum.FormaPagamento;
+import projetoprincipiosdesign.Enum.TipoCliente;
 import projetoprincipiosdesign.Pagamento.Pagamento;
 import projetoprincipiosdesign.Pagamento.PagamentoBoleto;
 import projetoprincipiosdesign.Pagamento.PagamentoCartao;
 import projetoprincipiosdesign.Pagamento.PagamentoPix;
-import projetoprincipiosdesign.Persistencia.PedidoRepositoryArquivo;
+import projetoprincipiosdesign.Persistencia.PedidoRepository;
 
 public class PedidoService {
-    private PedidoRepositoryArquivo pedidoRepository;
+    private PedidoRepository pedidoRepository;
 
-    public PedidoService() {
-        this.pedidoRepository = new PedidoRepositoryArquivo();
-    }
-
-    public double calcularTotal(Pedido pedido, String tipoCliente) {
+    public double calcularTotal(Pedido pedido, TipoCliente tipoCliente) {
         double total = 0.0;
 
         for (ItemPedido item : pedido.getItens()) {
@@ -36,7 +34,7 @@ public class PedidoService {
         return pedido.getCliente().getEndereco().getCidade().getNome();
     }
 
-    public void finalizarPedido(Pedido pedido, String formaPagamento, String tipoCliente, int numeroParcelas) {
+    public void finalizarPedido(Pedido pedido, FormaPagamento formaPagamento, TipoCliente tipoCliente, int numeroParcelas) {
         double total = calcularTotal(pedido, tipoCliente);
 
         pedidoRepository.salvar(pedido, total);
@@ -53,11 +51,11 @@ public class PedidoService {
         );
     }
 
-    private Pagamento criarPagamento(String formaPagamento) {
+    private Pagamento criarPagamento(FormaPagamento formaPagamento) {
         return switch (formaPagamento) {
-            case "CARTAO" -> new PagamentoCartao();
-            case "PIX" -> new PagamentoPix();
-            case "BOLETO" -> new PagamentoBoleto();
+            case CARTAO -> new PagamentoCartao();
+            case PIX -> new PagamentoPix();
+            case BOLETO -> new PagamentoBoleto();
 
             default -> throw new IllegalArgumentException(
                 "Forma de pagamento inválida: " + formaPagamento
@@ -65,11 +63,11 @@ public class PedidoService {
         };
     }
 
-    private Desconto criarDesconto(String tipoCliente) {
+    private Desconto criarDesconto(TipoCliente tipoCliente) {
         return switch (tipoCliente) {
-            case "ALUNO" -> new DescontoAluno();
-            case "PROFESSOR" -> new DescontoProfessor();
-            case "FUNCIONARIO" -> new DescontoFuncionario();
+            case ALUNO -> new DescontoAluno();
+            case PROFESSOR -> new DescontoProfessor();
+            case FUNCIONARIO -> new DescontoFuncionario();
 
             default -> throw new IllegalArgumentException(
                 "Tipo de cliente inválido: " + tipoCliente
