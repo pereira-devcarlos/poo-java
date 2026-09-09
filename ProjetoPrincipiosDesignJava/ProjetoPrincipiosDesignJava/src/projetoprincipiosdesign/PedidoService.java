@@ -24,13 +24,14 @@ public class PedidoService {
     public double calcularTotal(Pedido pedido) {
         double total = 0.0;
 
+        // Calcular o total do pedido com base nos itens
         for (ItemPedido item : pedido.getItens()) {
             total += item.getPreco() * item.getQuantidade();
         }
 
+        // Aplicar desconto com base no tipo de cliente
         Desconto desconto = criarDesconto(pedido.getCliente().getTipoCliente());
         total = desconto.calcularDesconto(total);
-
         return total;
     }
 
@@ -56,6 +57,7 @@ public class PedidoService {
         );
     }
 
+    // Método privado para criar o objeto de desconto com base no tipo de cliente
     private Desconto criarDesconto(TipoCliente tipoCliente) {
         return switch (tipoCliente) {
             case ALUNO -> new DescontoAluno();
