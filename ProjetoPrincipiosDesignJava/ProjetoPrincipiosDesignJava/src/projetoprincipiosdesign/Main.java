@@ -9,6 +9,7 @@ import projetoprincipiosdesign.Dominio.ItemPedido;
 import projetoprincipiosdesign.Dominio.Pedido;
 import projetoprincipiosdesign.Enum.FormaPagamento;
 import projetoprincipiosdesign.Enum.TipoCliente;
+import projetoprincipiosdesign.Persistencia.PedidoRepository;
 
 public class Main {
     public static void main(String[] args) {
@@ -30,7 +31,7 @@ public class Main {
             )
         );
 
-        PedidoService servico = new PedidoService();
+        PedidoService servico = new PedidoService(new PedidoRepository(), new PagamentoService());
 
         System.out.println();
         System.out.println("Cidade de entrega:");

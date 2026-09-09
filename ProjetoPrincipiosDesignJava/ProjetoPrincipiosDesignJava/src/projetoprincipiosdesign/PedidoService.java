@@ -8,14 +8,17 @@ import projetoprincipiosdesign.Dominio.ItemPedido;
 import projetoprincipiosdesign.Dominio.Pedido;
 import projetoprincipiosdesign.Enum.FormaPagamento;
 import projetoprincipiosdesign.Enum.TipoCliente;
-import projetoprincipiosdesign.Pagamento.Pagamento;
-import projetoprincipiosdesign.Pagamento.PagamentoBoleto;
-import projetoprincipiosdesign.Pagamento.PagamentoCartao;
-import projetoprincipiosdesign.Pagamento.PagamentoPix;
+import projetoprincipiosdesign.Pagamento.PagamentoService;
 import projetoprincipiosdesign.Persistencia.PedidoRepository;
 
 public class PedidoService {
-    private PedidoRepository pedidoRepository;
+    private final PedidoRepository pedidoRepository;
+    private final PagamentoService pagamentoService;
+
+    public PedidoService(PedidoRepository pedidoRepository, PagamentoService pagamentoService) {
+        this.pedidoRepository = pedidoRepository;
+        this.pagamentoService = pagamentoService;
+    }
 
     public double calcularTotal(Pedido pedido, TipoCliente tipoCliente) {
         double total = 0.0;
@@ -43,24 +46,11 @@ public class PedidoService {
         System.out.println("Cliente: " + pedido.getCliente().getNome());
         System.out.printf("Total: R$ %.2f%n", total);
 
-        Pagamento pagamento = criarPagamento(formaPagamento);
-        pagamento.pagar(total);
+        pagamentoService.processarPagamento(formaPagamento,total, numeroParcelas);
 
         System.out.println(
             "Enviando mensagem para " + pedido.getCliente().getNome() + ": pedido finalizado."
         );
-    }
-
-    private Pagamento criarPagamento(FormaPagamento formaPagamento) {
-        return switch (formaPagamento) {
-            case CARTAO -> new PagamentoCartao();
-            case PIX -> new PagamentoPix();
-            case BOLETO -> new PagamentoBoleto();
-
-            default -> throw new IllegalArgumentException(
-                "Forma de pagamento inválida: " + formaPagamento
-            );
-        };
     }
 
     private Desconto criarDesconto(TipoCliente tipoCliente) {
