@@ -13,14 +13,15 @@ import projetoprincipiosdesign.Pagamento.PagamentoService;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("=============== LOJA ACADÊMICA ===============");
+        System.out.println("================ LOJA ACADÊMICA ================");
 
         Cliente clienteAluno = new Cliente(
             "Ana",
             new Endereco(
                 "Rua das Flores",
                 new Cidade("Belo Horizonte")
-            )
+            ),
+            TipoCliente.ALUNO
         );
 
         Cliente clienteProfessor = new Cliente(
@@ -28,7 +29,8 @@ public class Main {
             new Endereco(
                 "Avenida Central",
                 new Cidade("São Paulo")
-            )
+            ),
+            TipoCliente.PROFESSOR
         );
 
         Cliente clienteFuncionario = new Cliente(
@@ -36,7 +38,8 @@ public class Main {
             new Endereco(
                 "Rua do Comércio",
                 new Cidade("Rio de Janeiro")
-            )
+            ),
+            TipoCliente.FUNCIONARIO
         );
 
         Pedido pedido1 = new Pedido(
@@ -66,31 +69,31 @@ public class Main {
         PedidoService servico = new PedidoService(new PagamentoService());
 
         System.out.println();
-        System.out.println("=============== PEDIDO 1 ===============");
+        System.out.println("=================== PEDIDO 1 ===================");
         System.out.print("Cidade de entrega: ");
         System.out.println(servico.obterCidadeEntrega(pedido1));
 
-        System.out.println();
+        System.out.println("------------------------------------------------");
         System.out.println("Pedido:");
-        servico.finalizarPedido(pedido1, FormaPagamento.BOLETO, TipoCliente.ALUNO, 0);
+        servico.finalizarPedido(pedido1, FormaPagamento.BOLETO, 0);
 
         System.out.println();
-        System.out.println("=============== PEDIDO 2 ===============");
+        System.out.println("=================== PEDIDO 2 ===================");
         System.out.print("Cidade de entrega: ");
         System.out.println(servico.obterCidadeEntrega(pedido2));
 
-        System.out.println();
+        System.out.println("------------------------------------------------");
         System.out.println("Pedido:");
-        servico.finalizarPedido(pedido2, FormaPagamento.CARTAO, TipoCliente.PROFESSOR, 3);
+        servico.finalizarPedido(pedido2, FormaPagamento.CARTAO, 3);
 
         System.out.println();
-        System.out.println("=============== PEDIDO 3 ===============");
+        System.out.println("=================== PEDIDO 3 ===================");
         System.out.print("Cidade de entrega: ");
         System.out.println(servico.obterCidadeEntrega(pedido3));
 
-        System.out.println();
+        System.out.println("------------------------------------------------");
         System.out.println("Pedido:");
-        servico.finalizarPedido(pedido3, FormaPagamento.PIX, TipoCliente.FUNCIONARIO, 0);
+        servico.finalizarPedido(pedido3, FormaPagamento.PIX, 0);
 
         System.out.println();
         System.out.println("Programa executado com sucesso.");

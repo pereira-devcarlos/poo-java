@@ -21,14 +21,14 @@ public class PedidoService {
         this.pagamentoService = pagamentoService;
     }
 
-    public double calcularTotal(Pedido pedido, TipoCliente tipoCliente) {
+    public double calcularTotal(Pedido pedido) {
         double total = 0.0;
 
         for (ItemPedido item : pedido.getItens()) {
             total += item.getPreco() * item.getQuantidade();
         }
 
-        Desconto desconto = criarDesconto(tipoCliente);
+        Desconto desconto = criarDesconto(pedido.getCliente().getTipoCliente());
         total = desconto.calcularDesconto(total);
 
         return total;
@@ -38,17 +38,19 @@ public class PedidoService {
         return pedido.getCliente().getEndereco().getCidade().getNome();
     }
 
-    public void finalizarPedido(Pedido pedido, FormaPagamento formaPagamento, TipoCliente tipoCliente, int numeroParcelas) {
-        double total = calcularTotal(pedido, tipoCliente);
+    public void finalizarPedido(Pedido pedido, FormaPagamento formaPagamento, int numeroParcelas) {
+        double total = calcularTotal(pedido);
 
         pedidoRepository.salvar(pedido, total);
 
+        System.out.println("------------------------------------------------");
         System.out.println("Gerando resumo do pedido...");
         System.out.println("Cliente: " + pedido.getCliente().getNome());
         System.out.printf("Total: R$ %.2f%n", total);
 
         pagamentoService.processarPagamento(formaPagamento, total, numeroParcelas);
 
+        System.out.println("------------------------------------------------");
         System.out.println(
             "Enviando mensagem para " + pedido.getCliente().getNome() + ": pedido finalizado."
         );

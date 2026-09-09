@@ -7,7 +7,8 @@ public class PagamentoService {
         switch (formaPagamento) {
             case BOLETO -> {
                 PagamentoBoleto pagamentoBoleto = new PagamentoBoleto();
-                System.out.println("================ Pagamento com boleto ================");
+                System.out.println("------------------------------------------------");
+                System.out.println("Pagamento com boleto:");
                 pagamentoBoleto.gerarBoleto(valor);
                 pagamentoBoleto.pagar(valor);
             }
@@ -18,7 +19,8 @@ public class PagamentoService {
                     throw new IllegalArgumentException("Número de parcelas não pode ser maior que 12.");
                 } else {
                     PagamentoCartao pagamentoCartao = new PagamentoCartao();
-                    System.out.println("================ Pagamento com cartão de crédito ================");
+                    System.out.println("------------------------------------------------");
+                    System.out.println("Pagamento com cartão de crédito:");
 
                     if (numeroParcelas == 0) {
                         pagamentoCartao.pagar(valor);
@@ -29,7 +31,8 @@ public class PagamentoService {
             }
             case PIX -> {
                 PagamentoPix pagamentoPix = new PagamentoPix();
-                System.out.println("================ Pagamento com PIX ================");
+                System.out.println("------------------------------------------------");
+                System.out.println("Pagamento com PIX:");
                 pagamentoPix.pagar(valor);
             }
         }
