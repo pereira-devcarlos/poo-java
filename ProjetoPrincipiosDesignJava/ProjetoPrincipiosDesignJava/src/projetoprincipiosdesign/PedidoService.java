@@ -35,20 +35,10 @@ public class PedidoService {
         return total;
     }
 
-    public String obterCidadeEntrega(Pedido pedido) {
-        return pedido.getCliente().getEndereco().getCidade().getNome();
-    }
-
     public void finalizarPedido(Pedido pedido, FormaPagamento formaPagamento, int numeroParcelas) {
         double total = calcularTotal(pedido);
 
         pedidoRepository.salvar(pedido, total);
-
-        System.out.println("------------------------------------------------");
-        System.out.println("Gerando resumo do pedido...");
-        System.out.println("Cliente: " + pedido.getCliente().getNome());
-        System.out.printf("Total: R$ %.2f%n", total);
-
         pagamentoService.processarPagamento(formaPagamento, total, numeroParcelas);
 
         System.out.println("------------------------------------------------");
@@ -57,7 +47,7 @@ public class PedidoService {
         );
     }
 
-    // Método privado para criar o objeto de desconto com base no tipo de cliente
+    // Metodo privado para criar o objeto de desconto com base no tipo de cliente
     private Desconto criarDesconto(TipoCliente tipoCliente) {
         return switch (tipoCliente) {
             case ALUNO -> new DescontoAluno();

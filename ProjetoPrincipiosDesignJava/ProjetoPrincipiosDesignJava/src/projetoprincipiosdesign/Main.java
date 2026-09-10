@@ -71,7 +71,7 @@ public class Main {
         System.out.println();
         System.out.println("=================== PEDIDO 1 ===================");
         System.out.print("Cidade de entrega: ");
-        System.out.println(servico.obterCidadeEntrega(pedido1));
+        System.out.println(clienteAluno.getEndereco().getCidade().getNome());
 
         System.out.println("------------------------------------------------");
         System.out.println("Pedido:");
@@ -80,7 +80,7 @@ public class Main {
         System.out.println();
         System.out.println("=================== PEDIDO 2 ===================");
         System.out.print("Cidade de entrega: ");
-        System.out.println(servico.obterCidadeEntrega(pedido2));
+        System.out.println(clienteProfessor.getEndereco().getCidade().getNome());
 
         System.out.println("------------------------------------------------");
         System.out.println("Pedido:");
@@ -89,7 +89,7 @@ public class Main {
         System.out.println();
         System.out.println("=================== PEDIDO 3 ===================");
         System.out.print("Cidade de entrega: ");
-        System.out.println(servico.obterCidadeEntrega(pedido3));
+        System.out.println(clienteFuncionario.getEndereco().getCidade().getNome());
 
         System.out.println("------------------------------------------------");
         System.out.println("Pedido:");
