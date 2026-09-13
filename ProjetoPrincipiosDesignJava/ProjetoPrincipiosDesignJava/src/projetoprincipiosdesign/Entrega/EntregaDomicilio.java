@@ -1,13 +1,13 @@
 package projetoprincipiosdesign.Entrega;
 
-public class EntregaDomicilio implements TipoEntrega {
+public class EntregaDomicilio implements IEntrega {
     @Override
-    public void calcularFrete(double valor) {
-        double frete = valor * 0.10; // 10% de frete para entrega domiciliar
-        double valorComFrete = valor + frete;
-        System.out.println("Valor original: " + valor);
-        System.out.println("Frete aplicado: " + frete);
-        System.out.println("Valor com frete: " + valorComFrete);
+    public boolean disponivelPara(double total) {
+        return true;
     }
-    
+
+    @Override
+    public double calcularFrete(double valor) {
+        return valor * 0.10;
+    }
 }

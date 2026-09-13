@@ -7,9 +7,16 @@ import projetoprincipiosdesign.Dominio.Cliente;
 import projetoprincipiosdesign.Dominio.Endereco;
 import projetoprincipiosdesign.Dominio.ItemPedido;
 import projetoprincipiosdesign.Dominio.Pedido;
-import projetoprincipiosdesign.Enum.FormaPagamento;
 import projetoprincipiosdesign.Enum.TipoCliente;
-import projetoprincipiosdesign.Pagamento.PagamentoService;
+import projetoprincipiosdesign.Desconto.IDesconto;
+import projetoprincipiosdesign.Desconto.DescontoAluno;
+import projetoprincipiosdesign.Desconto.DescontoFuncionario;
+import projetoprincipiosdesign.Desconto.DescontoProfessor;
+import projetoprincipiosdesign.Pagamento.PagamentoBoleto;
+import projetoprincipiosdesign.Pagamento.PagamentoCartao;
+import projetoprincipiosdesign.Pagamento.PagamentoPix;
+import projetoprincipiosdesign.Persistencia.IPedidoRepository;
+import projetoprincipiosdesign.Persistencia.PedidoRepositoryArquivo;
 
 public class Main {
     public static void main(String[] args) {
@@ -66,36 +73,45 @@ public class Main {
             )
         );
 
-        PedidoService servico = new PedidoService(new PagamentoService());
+        IPedidoRepository repository = new PedidoRepositoryArquivo();
+        PedidoService servico = new PedidoService(repository);
 
         System.out.println();
         System.out.println("=================== PEDIDO 1 ===================");
         System.out.print("Cidade de entrega: ");
-        System.out.println(clienteAluno.getEndereco().getCidade().getNome());
+        System.out.println(clienteAluno.getCidadeEntrega());
 
         System.out.println("------------------------------------------------");
         System.out.println("Pedido:");
-        servico.finalizarPedido(pedido1, FormaPagamento.BOLETO, 0);
+        servico.finalizarPedido(pedido1, descontoPara(clienteAluno), new PagamentoBoleto());
 
         System.out.println();
         System.out.println("=================== PEDIDO 2 ===================");
         System.out.print("Cidade de entrega: ");
-        System.out.println(clienteProfessor.getEndereco().getCidade().getNome());
+        System.out.println(clienteProfessor.getCidadeEntrega());
 
         System.out.println("------------------------------------------------");
         System.out.println("Pedido:");
-        servico.finalizarPedido(pedido2, FormaPagamento.CARTAO, 3);
+        servico.finalizarPedido(pedido2, descontoPara(clienteProfessor), new PagamentoCartao(3));
 
         System.out.println();
         System.out.println("=================== PEDIDO 3 ===================");
         System.out.print("Cidade de entrega: ");
-        System.out.println(clienteFuncionario.getEndereco().getCidade().getNome());
+        System.out.println(clienteFuncionario.getCidadeEntrega());
 
         System.out.println("------------------------------------------------");
         System.out.println("Pedido:");
-        servico.finalizarPedido(pedido3, FormaPagamento.PIX, 0);
+        servico.finalizarPedido(pedido3, descontoPara(clienteFuncionario), new PagamentoPix());
 
         System.out.println();
         System.out.println("Programa executado com sucesso.");
+    }
+
+    private static IDesconto descontoPara(Cliente cliente) {
+        return switch (cliente.getTipoCliente()) {
+            case ALUNO -> new DescontoAluno();
+            case PROFESSOR -> new DescontoProfessor();
+            case FUNCIONARIO -> new DescontoFuncionario();
+        };
     }
 }

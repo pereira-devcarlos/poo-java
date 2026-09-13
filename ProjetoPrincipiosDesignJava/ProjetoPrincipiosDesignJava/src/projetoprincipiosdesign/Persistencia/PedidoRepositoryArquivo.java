@@ -7,7 +7,7 @@ import java.nio.file.StandardOpenOption;
 
 import projetoprincipiosdesign.Dominio.Pedido;
 
-public class PedidoRepositoryArquivo implements PedidoRepository {
+public class PedidoRepositoryArquivo implements IPedidoRepository {
     @Override
     public void salvar(Pedido pedido, double total) {
         System.out.println("Salvando pedido em arquivo...");

@@ -2,7 +2,7 @@ package projetoprincipiosdesign.Persistencia;
 
 import projetoprincipiosdesign.Dominio.Pedido;
 
-public class PedidoRepositoryBanco implements PedidoRepository {
+public class PedidoRepositoryBanco implements IPedidoRepository {
     @Override
     public void salvar(Pedido pedido, double total) {
         // Implementação para salvar o pedido no banco de dados

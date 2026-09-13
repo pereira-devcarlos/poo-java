@@ -1,13 +1,13 @@
 package projetoprincipiosdesign.Entrega;
 
-public class RetiradaLoja implements TipoEntrega {
+public class RetiradaLoja implements IEntrega {
     @Override
-    public void calcularFrete(double valor) {
-        double frete = 0.0; // Sem frete para retirada na loja
-        double valorComFrete = valor + frete;
-        System.out.println("Valor original: " + valor);
-        System.out.println("Frete aplicado: " + frete);
-        System.out.println("Valor com frete: " + valorComFrete);
+    public boolean disponivelPara(double total) {
+        return total >= 50.0;
     }
-    
+
+    @Override
+    public double calcularFrete(double valor) {
+        return 0.0;
+    }
 }

@@ -1,5 +1,5 @@
 package projetoprincipiosdesign.Pagamento;
 
-public interface GerarBoleto {
+public interface IGeradorBoleto {
     void gerarBoleto(double valor);
 }

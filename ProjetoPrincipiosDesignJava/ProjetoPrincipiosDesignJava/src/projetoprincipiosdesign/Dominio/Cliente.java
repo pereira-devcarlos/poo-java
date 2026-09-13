@@ -36,4 +36,8 @@ public class Cliente {
     public void setTipoCliente(TipoCliente tipoCliente) {
         this.tipoCliente = tipoCliente;
     }
+
+    public String getCidadeEntrega() {
+        return endereco.getCidade().getNome();
+    }
 }

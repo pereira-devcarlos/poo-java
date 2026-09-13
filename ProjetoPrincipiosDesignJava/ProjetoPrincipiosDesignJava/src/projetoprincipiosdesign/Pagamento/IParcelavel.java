@@ -1,5 +1,5 @@
 package projetoprincipiosdesign.Pagamento;
 
-public interface Parcelavel {
+public interface IParcelavel {
     void parcelar(double valor, int parcelas);
 }
